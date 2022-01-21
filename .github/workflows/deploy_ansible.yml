@@ -1,39 +1,41 @@
-name: deploy ansible
+---
+name: Build and Push Container
 
 on:
+  pull_request:
   push:
     branches:
-    - main
-  pull_request:
-    branches:
-    - main
+      - main
+  schedule:
+    - cron: '50 * * * *'
+  workflow_dispatch:
 
 jobs:
-  # build:
-   # runs-on: ubuntu-latest
-   # steps:
-   # - name: checkout repo
-   #   uses: actions/checkout@v2
-   # - name: Lint Ansible Playbook
-   #   uses: ansible/ansible-lint-action@master
-   #   with:
-   #     targets: ""
-  deployAnsible:
-    # needs: build
+  # Test the image builds and works correctly.
+  test:
+    name: Test
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-    # - uses: ./.github/actions/ansible
-    - uses: ./
-      with: 
-        playbook: ./action.yml
-        inventory: localhost
+      - uses: actions/checkout@v2
+
+      - name: Test building image.
+        run: docker build -t docker-test .
+
+      - name: Run the built image.
+        run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro docker-test
+
+      - name: Verify systemctl in the built image.
+        run: docker exec --tty test-container env TERM=xterm systemctl --version
+
+      - name: Verify Ansible is accessible in the built image.
+        run: docker exec --tty test-container env TERM=xterm ansible --version
         
   # If on master branch, build and release image.
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: deployAnsible
+    needs: test
     if: github.ref == 'refs/heads/main'
 
     steps:
