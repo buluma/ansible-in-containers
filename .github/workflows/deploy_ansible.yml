@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     # - uses: ./.github/actions/ansible
-    - uses: ./Dockerfile
+    - uses: ./
       with: 
         playbook: playbook.yml
         inventory: localhost
