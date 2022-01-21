@@ -1,4 +1,4 @@
-FROM  buluma/ansible-in-containers
+FROM duffney/ansible-in-containers
 
 COPY ./entrypoint.sh /entrypoint.sh
 
