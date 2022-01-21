@@ -1,6 +1,5 @@
-FROM duffney/ansible-in-containers
+FROM buluma/ansible-in-containers:latest
 
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["bash","/entrypoint.sh"]
-# ENTRYPOINT ["ansible-playbook","action.yml"]
