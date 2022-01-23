@@ -1,5 +1,3 @@
 # Ansible in Docker Container
 
-[![Build and Push Container](https://github.com/buluma/ansible-in-containers/actions/workflows/deploy_ansible.yml/badge.svg)](https://github.com/buluma/ansible-in-containers/actions/workflows/deploy_ansible.yml)
-
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/buluma/ansible-in-containers/Build%20and%20Push%20Container/main?style=flat-square) ![Docker Pulls](https://img.shields.io/docker/pulls/buluma/ansible-in-containers?style=flat-square) ![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/buluma/ansible-in-containers?style=flat-square) ![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/buluma/ansible-in-containers/latest?style=flat-square) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/buluma/ansible-in-containers?style=flat-square) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/buluma/ansible-in-containers/main?style=flat-square)
