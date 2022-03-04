@@ -3,7 +3,7 @@ name: deploy ansible
 on:
   push:
     branches:
-    - master
+    - testing
   pull_request:
     branches:
     - master
