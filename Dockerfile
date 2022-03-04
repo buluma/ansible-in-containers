@@ -1,4 +1,4 @@
-FROM buluma/ansible-in-containers:latest
+FROM alpine:latest
 
 COPY entrypoint.sh /entrypoint.sh
 
