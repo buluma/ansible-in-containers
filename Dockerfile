@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM ubuntu:impish
 
 COPY entrypoint.sh /entrypoint.sh
 
